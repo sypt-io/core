@@ -1,0 +1,8 @@
+keytool -genkeypair -validity 730 -alias sypt-crypto-data-sig -keystore C:\Cert\sypt-crypto-data-ec.p12 -keypass sypt-crypto-data-pass -storepass sypt-crypto-data-pass -groupname secp384r1 -keyalg EC -dname "CN=sypt.io" -storetype PKCS12
+keytool -genkeypair -validity 730 -alias sypt-crypto-data-enc -keystore C:\Cert\sypt-crypto-data-ec.p12 -keypass sypt-crypto-data-pass -storepass sypt-crypto-data-pass -groupname secp384r1 -keyalg EC -dname "CN=sypt.io" -storetype PKCS12
+
+keytool -genkeypair -validity 730 -alias sypt-crypto-data-sig -keystore C:\Cert\sypt-crypto-data-rsa.p12 -keypass sypt-crypto-data-pass -storepass sypt-crypto-data-pass -keysize 4096 -keyalg RSA -dname "CN=sypt.io" -storetype PKCS12
+keytool -genkeypair -validity 730 -alias sypt-crypto-data-enc -keystore C:\Cert\sypt-crypto-data-rsa.p12 -keypass sypt-crypto-data-pass -storepass sypt-crypto-data-pass -keysize 4096 -keyalg RSA -dname "CN=sypt.io" -storetype PKCS12
+
+keytool -genkeypair -validity 730 -alias sypt-crypto-data-sig -keystore C:\Cert\sypt-crypto-data-pqc.p12 -keypass sypt-crypto-data-pass -storepass sypt-crypto-data-pass -keyalg ML-DSA-87 -dname "CN=sypt.io" -storetype PKCS12
+keytool -genkeypair -validity 730 -alias sypt-crypto-data-enc -keystore C:\Cert\sypt-crypto-data-pqc.p12 -keypass sypt-crypto-data-pass -storepass sypt-crypto-data-pass -keyalg ML-KEM-1024 -dname "CN=sypt.io" -storetype PKCS12 -signer sypt-crypto-data-sig
