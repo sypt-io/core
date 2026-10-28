@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<FindBugsFilter>
+	<!-- AES/KWP/NoPadding (RFC 5649) is an authenticated key wrap: integrity is checked on unwrap -->
+	<Match>
+		<Class name="io.sypt.core.crypter.cipher.AsymmetricPQCSypterCipher" />
+		<Bug pattern="CIPHER_INTEGRITY" />
+	</Match>
+	<!-- The KeyStore location is the application configuration, never an end-user input -->
+	<Match>
+		<Class name="io.sypt.core.keystore.KSMResourceLoader" />
+		<Method name="getResource" />
+		<Bug pattern="PATH_TRAVERSAL_IN" />
+	</Match>
+	<!-- The master KSM is a shared service object, not a value to be copied -->
+	<Match>
+		<Class name="io.sypt.core.keystore.factory.KSMFactory$Builder" />
+		<Method name="keyStoreManager" />
+		<Bug pattern="EI_EXPOSE_REP2" />
+	</Match>
+</FindBugsFilter>
